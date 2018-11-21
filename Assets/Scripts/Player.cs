@@ -8,10 +8,13 @@ public class Player : MonoBehaviour {
 	private Animator anim;
 	public Rigidbody2D rgb;
 	private bool CondPulo;
+
+	public bool direita;
 	// Use this for initialization
 	void Start () {
 		anim = gameObject.GetComponent<Animator>();
 		CondPulo = false;
+		direita = true;
 		//rgb = gameObject.GetComponent<Rigidbody2D>();
 	}
 	
@@ -20,12 +23,14 @@ public class Player : MonoBehaviour {
 		if(Input.GetAxis("Horizontal")>0){
 			transform.Translate(Vector2.right*speed*Time.deltaTime,0);
 			transform.eulerAngles = new Vector2(0,0);
+			direita = true;
 			
 
 		}
 		if(Input.GetAxis("Horizontal")<0){
 			transform.Translate(-Vector2.right*speed*Time.deltaTime,0);
 			transform.eulerAngles = new Vector2(0,180);
+			direita = false;
 
 			
 		}
@@ -43,7 +48,7 @@ public class Player : MonoBehaviour {
 	}
 	void OnCollisionEnter2D (Collision2D col)
     {
-        if(col.gameObject.name == "xxx")
+        if(col.gameObject.name == "Chao")
         {
             CondPulo = true;
             anim.SetTrigger("IsGround");
