@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Certo : MonoBehaviour {
 
+	
+
 	// Use this for initialization
 	void Start () {
+
 		
 	}
 	
@@ -17,6 +20,7 @@ public class Certo : MonoBehaviour {
 		if (collider.tag =="Bala") {
 			Destroy (transform.gameObject);
 
+			
 		}
 	}
 }
